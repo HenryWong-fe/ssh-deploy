@@ -11,7 +11,7 @@ const {
   SSH_PRIVATE_KEY,
   DEPLOY_KEY_NAME,
   SOURCE,
-  TARGET,
+  REMOTE_TARGET,
   ARGS,
   GITHUB_WORKSPACE,
   HOME
@@ -163,7 +163,7 @@ const run = () => {
 
   sshDeploy.init({
     src: GITHUB_WORKSPACE + "/" + SOURCE || "",
-    dest: TARGET || "/home/" + REMOTE_USER + "/",
+    dest: REMOTE_TARGET || "/home/" + REMOTE_USER + "/",
     args: [ARGS] || ["-rltgoDzvO"],
     host: REMOTE_HOST,
     username: REMOTE_USER,
