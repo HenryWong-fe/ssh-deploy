@@ -37,6 +37,8 @@ const sshDeploy = (() => {
         (error, stdout, stderr, cmd) => {
           if (error) {
             console.error("⚠️ Rsync error", error.message);
+            console.log("⚠️ Rsync cmd", cmd);
+            console.log("⚠️ Rsync stderr", stderr);
             process.abort();
           } else {
             console.log("✅ Rsync finished.", stdout);
@@ -62,10 +64,8 @@ const sshDeploy = (() => {
         privateKeyContent,
         DEPLOY_KEY_NAME || "deploy_key"
       );
-      console.log('privateKey', privateKey);
       
       const remoteDest = username + "@" + host + ":" + dest;
-      console.log('remoteDest', remoteDest);
       rsync({ privateKey, src, dest: remoteDest, args });
     });
   };
