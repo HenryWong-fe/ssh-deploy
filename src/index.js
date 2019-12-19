@@ -84,7 +84,7 @@ const sshDeploy = (() => {
       try {
         fs.writeFileSync(filePath, "", {
           encoding: "utf8",
-          mode: 600
+          mode: 0o600
         });
       } catch (e) {
         console.error("⚠️ writeFileSync error", filePath, e.message);
@@ -105,7 +105,7 @@ const sshDeploy = (() => {
     try {
       fs.writeFileSync(filePath, key, {
         encoding: "utf8",
-        mode: 600
+        mode: 0o600
       });
     } catch (e) {
       console.error("⚠️ writeFileSync error", filePath, e.message);
