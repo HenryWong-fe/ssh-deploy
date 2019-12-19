@@ -16,7 +16,6 @@ const {
   GITHUB_WORKSPACE,
   HOME
 } = process.env;
-console.log("GITHUB_WORKSPACE", GITHUB_WORKSPACE);
 
 const sshDeploy = (() => {
   const rsync = ({ privateKey, src, dest, args }) => {
@@ -85,7 +84,7 @@ const sshDeploy = (() => {
       try {
         fs.writeFileSync(filePath, "", {
           encoding: "utf8",
-          mode: 0o600
+          mode: 600
         });
       } catch (e) {
         console.error("⚠️ writeFileSync error", filePath, e.message);
